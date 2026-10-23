@@ -11,6 +11,7 @@ vi.mock("next/image", () => ({
 
 it("uses accessible semantic HTML and image alt text", () => {
   const imageAlt = "Portrait of Ada Lovelace";
+  const className = "w-full";
 
   render(
     <TestimonialCard
@@ -18,6 +19,7 @@ it("uses accessible semantic HTML and image alt text", () => {
       username="@ada"
       testimonial="A thoughtful testimonial."
       imageAlt={imageAlt}
+      className={className}
     />,
   );
 
@@ -26,6 +28,7 @@ it("uses accessible semantic HTML and image alt text", () => {
   const image = within(card).getByRole("img", { name: imageAlt });
 
   expect(card).not.toHaveAttribute("role");
+  expect(card).toHaveClass(className);
   expect(header).toBeInTheDocument();
   expect(header).not.toHaveAttribute("role");
   expect(image).toHaveAttribute("alt", imageAlt);

@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { componentRegistry, isComponentSlug } from "@/lib/component-registry";
+import {
+  componentRegistry,
+  isComponentSlug,
+  type ComponentRegistryEntry,
+} from "@/lib/component-registry";
 
 type ComponentPreviewPageProps = {
   params: Promise<{ slug: string }>;
@@ -39,14 +43,16 @@ export default async function ComponentPreviewPage({
     notFound();
   }
 
-  const component = componentRegistry[slug];
+  const component: ComponentRegistryEntry = componentRegistry[slug];
 
   return (
     <main
-      className="testimonial-page min-h-screen"
+      className={`component-preview-page min-h-screen ${component.pageClassName ?? ""}`}
       aria-label={`${component.title} preview`}
     >
-      <div className="mx-auto flex min-h-screen w-full max-w-7xl flex-col items-center px-4 py-50 md:px-8">
+      <div
+        className={`mx-auto flex min-h-screen w-full max-w-7xl flex-col items-center px-4 py-50 md:px-8 ${component.containerClassName ?? ""}`}
+      >
         {component.render()}
       </div>
     </main>
