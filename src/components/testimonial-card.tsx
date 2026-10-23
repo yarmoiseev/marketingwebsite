@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { cn } from "@/lib/utils";
 
 export type TestimonialCardProps = {
   name?: string;
@@ -6,6 +7,7 @@ export type TestimonialCardProps = {
   testimonial?: string;
   imageSrc?: string;
   imageAlt?: string;
+  className?: string;
 };
 
 const defaultTestimonial =
@@ -17,9 +19,15 @@ export function TestimonialCard({
   testimonial = defaultTestimonial,
   imageSrc = "/profile-thumbnail.jpeg",
   imageAlt = "Portrait of Sarah Dole",
+  className,
 }: TestimonialCardProps) {
   return (
-    <article className="flex w-[340px] max-w-full flex-col gap-4 rounded-lg bg-white p-6 shadow-[0_1px_1.5px_rgba(0,0,0,0.1),0_1px_1px_rgba(0,0,0,0.1)]">
+    <article
+      className={cn(
+        "flex w-[340px] max-w-full flex-col gap-4 rounded-lg bg-white p-6 shadow-[0_1px_1.5px_rgba(0,0,0,0.1),0_1px_1px_rgba(0,0,0,0.1)]",
+        className,
+      )}
+    >
       <header className="flex w-full items-center gap-4">
         <div className="relative size-12 shrink-0 overflow-hidden rounded-full">
           <Image

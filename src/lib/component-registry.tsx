@@ -1,10 +1,13 @@
 import type { ReactNode } from "react";
+import { BlogCard } from "@/components/blog-card";
 import { TestimonialCard } from "@/components/testimonial-card";
 
 export type ComponentRegistryEntry = {
   title: string;
   description: string;
   render: () => ReactNode;
+  pageClassName?: string;
+  containerClassName?: string;
 };
 
 /**
@@ -18,6 +21,13 @@ export const componentRegistry = {
     title: "Testimonial card",
     description: "A responsive card for displaying a customer testimonial.",
     render: () => <TestimonialCard />,
+  },
+  "blog-card": {
+    title: "Blog card",
+    description: "A compact editorial card for featuring a blog post.",
+    render: () => <BlogCard />,
+    pageClassName: "bg-neutral-50",
+    containerClassName: "py-[120px]",
   },
 } satisfies Record<string, ComponentRegistryEntry>;
 

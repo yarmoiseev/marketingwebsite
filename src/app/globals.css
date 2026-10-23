@@ -130,7 +130,7 @@
   }
 }
 
-.testimonial-page {
+.component-preview-page {
   background-image: linear-gradient(
     125.96395580196646deg,
     rgb(249 250 251) 8.8874%,
@@ -139,7 +139,7 @@
 }
 
 @media (min-width: 768px) {
-  .testimonial-page {
+  .component-preview-page {
     background-image: linear-gradient(
       139.68046518822732deg,
       rgb(249 250 251) 8.8874%,
@@ -149,7 +149,7 @@
 }
 
 @media (min-width: 1024px) {
-  .testimonial-page {
+  .component-preview-page {
     background-image: linear-gradient(
       161.2497461240432deg,
       rgb(249 250 251) 8.8874%,
