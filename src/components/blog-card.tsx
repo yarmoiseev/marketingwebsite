@@ -33,7 +33,7 @@ export function BlogCard({
   return (
     <article
       className={cn(
-        "flex h-full w-[340px] max-w-full flex-col overflow-hidden rounded-lg bg-white [overflow-wrap:anywhere] shadow-[0_1px_3px_rgba(0,0,0,0.1),0_1px_2px_rgba(0,0,0,0.06)]",
+        "flex h-full w-[340px] max-w-full flex-col overflow-hidden rounded-[8px] bg-white [overflow-wrap:anywhere] shadow-[0_1px_3px_rgba(0,0,0,0.1),0_1px_2px_rgba(0,0,0,0.06)]",
         className,
       )}
     >
