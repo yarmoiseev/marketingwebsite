@@ -1,0 +1,6 @@
+#!/bin/sh
+
+set -eu
+
+printf '%s\n' 'Running all tests before commit...'
+exec pnpm test:all

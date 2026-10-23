@@ -6,10 +6,22 @@ const figmaFrames = [
   { name: "mobile", width: 375, height: 812 },
 ] as const;
 
+const componentRoute = "/components/testimonial-card";
+
+test("component gallery links to the testimonial card route", async ({
+  page,
+}) => {
+  await page.goto("/components", { waitUntil: "load" });
+
+  await expect(
+    page.getByRole("link", { name: /Testimonial card/ }),
+  ).toHaveAttribute("href", componentRoute);
+});
+
 for (const frame of figmaFrames) {
   test(`${frame.name} matches the Figma frame`, async ({ page }) => {
     await page.setViewportSize({ width: frame.width, height: frame.height });
-    await page.goto("/", { waitUntil: "load" });
+    await page.goto(componentRoute, { waitUntil: "load" });
 
     await page.evaluate(() => document.fonts.ready);
     const card = page.locator("article");
@@ -51,7 +63,7 @@ test("wraps long unbroken strings without horizontal overflow", async ({
   page,
 }) => {
   await page.setViewportSize({ width: 375, height: 812 });
-  await page.goto("/", { waitUntil: "load" });
+  await page.goto(componentRoute, { waitUntil: "load" });
 
   const values = {
     name: "N".repeat(1_000),

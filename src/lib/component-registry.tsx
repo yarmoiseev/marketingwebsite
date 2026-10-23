@@ -1,0 +1,28 @@
+import type { ReactNode } from "react";
+import { TestimonialCard } from "@/components/testimonial-card";
+
+export type ComponentRegistryEntry = {
+  title: string;
+  description: string;
+  render: () => ReactNode;
+};
+
+/**
+ * The single source of truth for component previews.
+ *
+ * Add a component here to make it available at /components/<slug> and in the
+ * component gallery at /components.
+ */
+export const componentRegistry = {
+  "testimonial-card": {
+    title: "Testimonial card",
+    description: "A responsive card for displaying a customer testimonial.",
+    render: () => <TestimonialCard />,
+  },
+} satisfies Record<string, ComponentRegistryEntry>;
+
+export type ComponentSlug = keyof typeof componentRegistry;
+
+export function isComponentSlug(value: string): value is ComponentSlug {
+  return value in componentRegistry;
+}

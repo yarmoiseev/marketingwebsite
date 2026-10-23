@@ -8,8 +8,10 @@
     "start": "next start",
     "lint": "eslint",
     "test": "vitest run",
+    "test:all": "pnpm lint && pnpm test && pnpm test:visual",
     "test:watch": "vitest",
-    "test:visual": "playwright test"
+    "test:visual": "playwright test",
+    "prepare": "git rev-parse --git-dir >/dev/null 2>&1 && git config core.hooksPath .githooks >/dev/null 2>&1 || true"
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",
