@@ -108,6 +108,47 @@ test("wraps long text without horizontal overflow", async ({ page }) => {
   expect(metrics.overflowingTextElements).toEqual([]);
 });
 
+test("keeps cards the same height and aligns their read more links", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 768, height: 1024 });
+  await page.goto(componentRoute, { waitUntil: "load" });
+  await page.evaluate(() => document.fonts.ready);
+
+  await page.locator("article").evaluate((card) => {
+    const list = card.parentElement;
+    if (!list) throw new Error("The blog card has no parent container");
+
+    list.className = "grid grid-cols-2 items-stretch gap-4";
+    list.replaceChildren(card, card.cloneNode(true));
+
+    const cards = list.querySelectorAll("article");
+    const secondTitle = cards[1]?.querySelector("h2");
+    const secondDescription = cards[1]?.querySelector("p");
+
+    if (!secondTitle || !secondDescription) {
+      throw new Error("The cloned blog card is missing its text content");
+    }
+
+    secondTitle.textContent = "A much longer title that wraps onto additional lines";
+    secondDescription.textContent =
+      "A longer article description provides enough content to make this card taller than its sibling before the grid stretches both cards to the same height.";
+  });
+
+  const cards = page.locator("article");
+  await expect(cards).toHaveCount(2);
+
+  const geometry = await cards.evaluateAll((elements) =>
+    elements.map((element) => ({
+      height: element.getBoundingClientRect().height,
+      readMoreTop: element.querySelector("a")?.getBoundingClientRect().top,
+    })),
+  );
+
+  expect(geometry[0]?.height).toBe(geometry[1]?.height);
+  expect(geometry[0]?.readMoreTop).toBe(geometry[1]?.readMoreTop);
+});
+
 test("uses semantic elements and accessible image alternatives", async ({
   page,
 }) => {
