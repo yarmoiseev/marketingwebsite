@@ -13,6 +13,8 @@ export type BlogCardProps = {
   preload?: boolean;
 };
 
+// Editorial content limits are intentionally handled by authors or the CMS.
+// The card keeps its title and description visible instead of truncating them.
 const defaultTitle = "Top 5 Living Room Inspirations";
 const defaultDescription =
   "Curated vibrants colors for your living, make it pop & calm in the same time.";
@@ -31,7 +33,7 @@ export function BlogCard({
   return (
     <article
       className={cn(
-        "flex w-[340px] max-w-full flex-col overflow-hidden rounded-lg bg-white [overflow-wrap:anywhere] shadow-[0_1px_3px_rgba(0,0,0,0.1),0_1px_2px_rgba(0,0,0,0.06)]",
+        "flex h-full w-[340px] max-w-full flex-col overflow-hidden rounded-lg bg-white [overflow-wrap:anywhere] shadow-[0_1px_3px_rgba(0,0,0,0.1),0_1px_2px_rgba(0,0,0,0.06)]",
         className,
       )}
     >
@@ -46,8 +48,8 @@ export function BlogCard({
         />
       </div>
 
-      <div className="w-full min-w-0 shrink-0">
-        <div className="flex min-w-0 flex-col items-start gap-3 px-4 py-6">
+      <div className="flex w-full min-w-0 flex-1 flex-col">
+        <div className="flex h-full min-w-0 flex-col items-start gap-3 px-4 py-6">
           <header className="flex w-full min-w-0 flex-col items-start gap-2">
             <span className="inline-block h-auto min-h-6 w-fit max-w-full min-w-0 break-words rounded-full border border-green-200 bg-green-50 px-2 py-px text-center text-sm font-normal leading-5 text-green-700 [overflow-wrap:anywhere]">
               {category}
@@ -57,7 +59,7 @@ export function BlogCard({
             </h2>
           </header>
 
-          <div className="flex w-full min-w-0 flex-col gap-6">
+          <div className="mt-auto flex w-full min-w-0 flex-col gap-6">
             <p className="w-full break-words text-base font-medium leading-6 text-neutral-600 [word-break:break-word]">
               {description}
             </p>
