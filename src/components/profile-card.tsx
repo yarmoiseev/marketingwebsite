@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useId } from "react";
 import { cn } from "@/lib/utils";
+import { Avatar } from "./avatar";
 
 export type ProfileCardProps = {
   name?: string;
@@ -62,12 +63,10 @@ export function ProfileCard({
       )}
     >
       <div className="flex w-full shrink-0 flex-col items-center gap-6">
-        <Image
+        <Avatar
           src={imageSrc}
           alt={imageAlt}
-          width={64}
-          height={64}
-          className="size-16 shrink-0 rounded-full object-cover"
+          size={64}
         />
 
         <div className="flex w-full flex-col items-center justify-center gap-1 text-center [word-break:break-word]">

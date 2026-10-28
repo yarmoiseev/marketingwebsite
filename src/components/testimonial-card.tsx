@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { Avatar } from "./avatar";
 
 export type TestimonialCardProps = {
   name?: string;
@@ -29,15 +29,7 @@ export function TestimonialCard({
       )}
     >
       <header className="flex w-full items-center gap-4">
-        <div className="relative size-12 shrink-0 overflow-hidden rounded-full">
-          <Image
-            src={imageSrc}
-            alt={imageAlt}
-            width={48}
-            height={48}
-            className="size-full object-cover"
-          />
-        </div>
+        <Avatar src={imageSrc} alt={imageAlt} />
 
         <div className="flex min-w-0 flex-1 flex-col gap-px [word-break:break-word]">
           <p className="break-words text-lg font-semibold leading-7 text-neutral-900">
