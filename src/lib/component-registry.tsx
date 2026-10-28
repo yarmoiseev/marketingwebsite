@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { BlogCard } from "@/components/blog-card";
+import { HeroSection } from "@/components/hero-section";
 import { ProfileCard } from "@/components/profile-card";
 import { TestimonialCard } from "@/components/testimonial-card";
 
@@ -34,6 +35,12 @@ export const componentRegistry = {
     render: () => <BlogCard />,
     pageClassName: "bg-neutral-50",
     containerClassName: "py-[120px]",
+  },
+  "hero-section": {
+    title: "Hero section",
+    description: "A responsive hero section with abstract artwork and calls to action.",
+    render: () => <HeroSection />,
+    containerClassName: "max-w-none justify-center !p-4 md:!p-4",
   },
 } satisfies Record<string, ComponentRegistryEntry>;
 

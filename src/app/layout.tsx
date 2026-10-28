@@ -15,6 +15,11 @@ const notoSans = localFont({
       weight: "500",
       style: "normal",
     },
+    {
+      path: "./fonts/NotoSans-SemiBold.ttf",
+      weight: "600",
+      style: "normal",
+    },
   ],
   display: "swap",
 });
