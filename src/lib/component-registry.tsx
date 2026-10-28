@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { BlogCard } from "@/components/blog-card";
+import { ProfileCard } from "@/components/profile-card";
 import { TestimonialCard } from "@/components/testimonial-card";
 
 export type ComponentRegistryEntry = {
@@ -21,6 +22,11 @@ export const componentRegistry = {
     title: "Testimonial card",
     description: "A responsive card for displaying a customer testimonial.",
     render: () => <TestimonialCard />,
+  },
+  "profile-card": {
+    title: "Profile card",
+    description: "A profile card with contact and social links.",
+    render: () => <ProfileCard />,
   },
   "blog-card": {
     title: "Blog card",
