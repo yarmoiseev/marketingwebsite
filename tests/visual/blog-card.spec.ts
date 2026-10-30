@@ -55,6 +55,7 @@ for (const frame of figmaFrames) {
 test("wraps long text without horizontal overflow", async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 812 });
   await page.goto(componentRoute, { waitUntil: "load" });
+  await page.waitForLoadState("networkidle");
 
   const values = {
     category: "C".repeat(1_000),

@@ -39,7 +39,11 @@ export const componentRegistry = {
   "hero-section": {
     title: "Hero section",
     description: "A responsive hero section with abstract artwork and calls to action.",
-    render: () => <HeroSection />,
+    render: () => (
+      <div className="flex w-full flex-1 flex-col items-start justify-center rounded-[4px] bg-[linear-gradient(171.35deg,rgb(249_250_251)_0.94%,rgb(237_240_243)_316.54%)] drop-shadow-[0px_1px_1px_rgba(0,0,0,0.05)] md:rounded-[6px] md:bg-[linear-gradient(174.85deg,rgb(249_250_251)_0.94%,rgb(237_240_243)_316.54%)] md:py-2 md:drop-shadow-[0px_4px_3px_rgba(0,0,0,0.1),0px_2px_2px_rgba(0,0,0,0.06)] xl:bg-[linear-gradient(178deg,rgb(249_250_251)_0.94%,rgb(237_240_243)_316.54%)] xl:drop-shadow-[0px_10px_7.5px_rgba(0,0,0,0.1),0px_4px_3px_rgba(0,0,0,0.05)]">
+        <HeroSection />
+      </div>
+    ),
     containerClassName: "max-w-none justify-center !p-4 md:!p-4",
   },
 } satisfies Record<string, ComponentRegistryEntry>;

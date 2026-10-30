@@ -64,6 +64,7 @@ test("wraps long unbroken strings without horizontal overflow", async ({
 }) => {
   await page.setViewportSize({ width: 375, height: 812 });
   await page.goto(componentRoute, { waitUntil: "load" });
+  await page.waitForLoadState("networkidle");
 
   const values = {
     name: "N".repeat(1_000),
